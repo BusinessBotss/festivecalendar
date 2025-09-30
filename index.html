@@ -1,0 +1,1363 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard de Fechas Comerciales - Guía de Productos y Servicios</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            box-sizing: border-box;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #1f2937 0%, #111827 100%);
+        }
+        
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+        
+        .event-high { border-left: 4px solid #ef4444; }
+        .event-medium { border-left: 4px solid #f59e0b; }
+        .event-low { border-left: 4px solid #10b981; }
+        
+        .demand-indicator {
+            background: linear-gradient(90deg, #10b981, #f59e0b, #ef4444);
+            height: 4px;
+            border-radius: 2px;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+        
+        .pulse-animation {
+            animation: pulse 2s infinite;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 font-sans">
+    <!-- Header -->
+    <header class="gradient-bg text-white shadow-lg">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <div>
+                    <h1 class="text-2xl font-bold">🗓️ Dashboard de Fechas Comerciales</h1>
+                    <p class="text-blue-100 text-sm">Guía Inteligente de Productos y Servicios por Temporada</p>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <div class="text-right">
+                        <div class="text-sm opacity-90">Fechas Clave 2024</div>
+                        <div class="text-xl font-bold">52 Eventos</div>
+                    </div>
+                    <div class="w-12 h-12 bg-white bg-opacity-20 rounded-full flex items-center justify-center">
+                        🎯
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation Tabs -->
+    <nav class="bg-white shadow-sm border-b">
+        <div class="container mx-auto px-6">
+            <div class="flex space-x-8">
+                <button onclick="showView('annual')" id="tab-annual" class="py-4 px-2 border-b-2 border-blue-500 text-blue-600 font-medium">
+                    Vista Anual
+                </button>
+                <button onclick="showView('quarterly')" id="tab-quarterly" class="py-4 px-2 border-b-2 border-transparent text-gray-500 hover:text-gray-700">
+                    Vista Trimestral
+                </button>
+                <button onclick="showView('monthly')" id="tab-monthly" class="py-4 px-2 border-b-2 border-transparent text-gray-500 hover:text-gray-700">
+                    Vista Mensual
+                </button>
+                <button onclick="showView('weekly')" id="tab-weekly" class="py-4 px-2 border-b-2 border-transparent text-gray-500 hover:text-gray-700">
+                    Vista Semanal
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-6 py-8">
+        <!-- Annual View -->
+        <div id="annual-view" class="view-content">
+            <div class="mb-8">
+                <h2 class="text-3xl font-bold text-gray-800 mb-2">Panorama Anual 2024</h2>
+                <p class="text-gray-600">Distribución estratégica de fechas clave con métricas proyectadas</p>
+            </div>
+
+            <!-- Key Metrics Dashboard -->
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+                <div class="bg-white rounded-lg shadow-md p-6 card-hover">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-sm text-gray-600">Fechas de Alta Demanda</p>
+                            <p class="text-2xl font-bold text-red-600">12</p>
+                        </div>
+                        <div class="text-3xl">🔥</div>
+                    </div>
+                </div>
+                <div class="bg-white rounded-lg shadow-md p-6 card-hover">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-sm text-gray-600">Oportunidades Comerciales</p>
+                            <p class="text-2xl font-bold text-yellow-600">28</p>
+                        </div>
+                        <div class="text-3xl">⚡</div>
+                    </div>
+                </div>
+                <div class="bg-white rounded-lg shadow-md p-6 card-hover">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-sm text-gray-600">Categorías de Productos</p>
+                            <p class="text-2xl font-bold text-green-600">15</p>
+                        </div>
+                        <div class="text-3xl">📦</div>
+                    </div>
+                </div>
+                <div class="bg-white rounded-lg shadow-md p-6 card-hover">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-sm text-gray-600">Tendencias Identificadas</p>
+                            <p class="text-2xl font-bold text-blue-600">52</p>
+                        </div>
+                        <div class="text-3xl">📊</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Annual Calendar Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                <div class="bg-white rounded-lg shadow-md p-6 card-hover">
+                    <h3 class="font-bold text-lg mb-4 text-gray-800">Q1 - Enero</h3>
+                    <div class="space-y-3">
+                        <div class="event-medium p-3 bg-gray-50 rounded">
+                            <div class="font-semibold text-sm">Año Nuevo</div>
+                            <div class="text-xs text-gray-600">Propósitos y fitness</div>
+                            <div class="text-xs text-blue-600 mt-1">🏃‍♂️ Equipos fitness, apps salud, suplementos</div>
+                            <div class="demand-indicator mt-2"></div>
+                        </div>
+                        <div class="event-low p-3 bg-gray-50 rounded">
+                            <div class="font-semibold text-sm">Rebajas</div>
+                            <div class="text-xs text-gray-600">Liquidación stock</div>
+                            <div class="text-xs text-blue-600 mt-1">👕 Ropa, electrónicos, hogar</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-md p-6 card-hover">
+                    <h3 class="font-bold text-lg mb-4 text-gray-800">Q1 - Febrero</h3>
+                    <div class="space-y-3">
+                        <div class="event-high p-3 bg-gray-50 rounded pulse-animation">
+                            <div class="font-semibold text-sm">San Valentín ❤️</div>
+                            <div class="text-xs text-gray-600">Alto impacto emocional</div>
+                            <div class="text-xs text-blue-600 mt-1">💍 Joyería, perfumes, flores, experiencias románticas</div>
+                            <div class="demand-indicator mt-2"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-md p-6 card-hover">
+                    <h3 class="font-bold text-lg mb-4 text-gray-800">Q1 - Marzo</h3>
+                    <div class="space-y-3">
+                        <div class="event-medium p-3 bg-gray-50 rounded">
+                            <div class="font-semibold text-sm">Día de la Mujer</div>
+                            <div class="text-xs text-gray-600">Empoderamiento</div>
+                            <div class="text-xs text-blue-600 mt-1">💄 Cosméticos, libros, cursos online, spa</div>
+                        </div>
+                        <div class="event-medium p-3 bg-gray-50 rounded">
+                            <div class="font-semibold text-sm">Primavera</div>
+                            <div class="text-xs text-gray-600">Renovación</div>
+                            <div class="text-xs text-blue-600 mt-1">🌸 Ropa primaveral, jardinería, limpieza hogar</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-md p-6 card-hover">
+                    <h3 class="font-bold text-lg mb-4 text-gray-800">Q2 - Abril</h3>
+                    <div class="space-y-3">
+                        <div class="event-high p-3 bg-gray-50 rounded">
+                            <div class="font-semibold text-sm">Semana Santa 🐰</div>
+                            <div class="text-xs text-gray-600">Vacaciones familiares</div>
+                            <div class="text-xs text-blue-600 mt-1">✈️ Viajes, maletas, chocolate, juguetes</div>
+                            <div class="demand-indicator mt-2"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-md p-6 card-hover">
+                    <h3 class="font-bold text-lg mb-4 text-gray-800">Q2 - Mayo</h3>
+                    <div class="space-y-3">
+                        <div class="event-medium p-3 bg-gray-50 rounded">
+                            <div class="font-semibold text-sm">Día de la Madre</div>
+                            <div class="text-xs text-gray-600">Regalos especiales</div>
+                            <div class="text-xs text-blue-600 mt-1">🌹 Flores, joyería, spa, electrodomésticos</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-md p-6 card-hover">
+                    <h3 class="font-bold text-lg mb-4 text-gray-800">Q2 - Junio</h3>
+                    <div class="space-y-3">
+                        <div class="event-medium p-3 bg-gray-50 rounded">
+                            <div class="font-semibold text-sm">Día del Padre</div>
+                            <div class="text-xs text-gray-600">Tecnología y hobbies</div>
+                            <div class="text-xs text-blue-600 mt-1">⌚ Gadgets, herramientas, deportes, cerveza</div>
+                        </div>
+                        <div class="event-low p-3 bg-gray-50 rounded">
+                            <div class="font-semibold text-sm">Verano</div>
+                            <div class="text-xs text-gray-600">Vacaciones</div>
+                            <div class="text-xs text-blue-600 mt-1">🏖️ Protector solar, ropa playa, aire acondicionado</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-md p-6 card-hover">
+                    <h3 class="font-bold text-lg mb-4 text-gray-800">Q3 - Julio</h3>
+                    <div class="space-y-3">
+                        <div class="event-low p-3 bg-gray-50 rounded">
+                            <div class="font-semibold text-sm">Rebajas Verano</div>
+                            <div class="text-xs text-gray-600">Moda estacional</div>
+                            <div class="text-xs text-blue-600 mt-1">👕 Ropa verano, sandalias, gafas de sol</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-md p-6 card-hover">
+                    <h3 class="font-bold text-lg mb-4 text-gray-800">Q3 - Agosto</h3>
+                    <div class="space-y-3">
+                        <div class="event-medium p-3 bg-gray-50 rounded">
+                            <div class="font-semibold text-sm">Vuelta al Cole</div>
+                            <div class="text-xs text-gray-600">Educación y organización</div>
+                            <div class="text-xs text-blue-600 mt-1">🎒 Mochilas, material escolar, uniformes</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-md p-6 card-hover">
+                    <h3 class="font-bold text-lg mb-4 text-gray-800">Q3 - Septiembre</h3>
+                    <div class="space-y-3">
+                        <div class="event-high p-3 bg-gray-50 rounded">
+                            <div class="font-semibold text-sm">Back to School 📚</div>
+                            <div class="text-xs text-gray-600">Apps y suscripciones</div>
+                            <div class="text-xs text-blue-600 mt-1">💻 Laptops, tablets, cursos online, software</div>
+                            <div class="demand-indicator mt-2"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-md p-6 card-hover">
+                    <h3 class="font-bold text-lg mb-4 text-gray-800">Q4 - Octubre</h3>
+                    <div class="space-y-3">
+                        <div class="event-high p-3 bg-gray-50 rounded pulse-animation">
+                            <div class="font-semibold text-sm">Halloween 🎃</div>
+                            <div class="text-xs text-gray-600">Gamificación y misterio</div>
+                            <div class="text-xs text-blue-600 mt-1">👻 Disfraces, decoración, dulces, maquillaje</div>
+                            <div class="demand-indicator mt-2"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-md p-6 card-hover">
+                    <h3 class="font-bold text-lg mb-4 text-gray-800">Q4 - Noviembre</h3>
+                    <div class="space-y-3">
+                        <div class="event-high p-3 bg-gray-50 rounded pulse-animation">
+                            <div class="font-semibold text-sm">Singles' Day 🛍️</div>
+                            <div class="text-xs text-gray-600">11.11 - Mobile first</div>
+                            <div class="text-xs text-blue-600 mt-1">📱 Moda, gadgets, lifestyle, belleza</div>
+                            <div class="demand-indicator mt-2"></div>
+                        </div>
+                        <div class="event-high p-3 bg-gray-50 rounded pulse-animation">
+                            <div class="font-semibold text-sm">Black Friday 🔥</div>
+                            <div class="text-xs text-gray-600">Máxima saturación</div>
+                            <div class="text-xs text-blue-600 mt-1">🛒 Electrónicos, hogar, ropa, juguetes</div>
+                            <div class="demand-indicator mt-2"></div>
+                        </div>
+                        <div class="event-high p-3 bg-gray-50 rounded pulse-animation">
+                            <div class="font-semibold text-sm">Cyber Monday 💻</div>
+                            <div class="text-xs text-gray-600">Productos digitales</div>
+                            <div class="text-xs text-blue-600 mt-1">💾 Software, apps, cursos, suscripciones</div>
+                            <div class="demand-indicator mt-2"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-md p-6 card-hover">
+                    <h3 class="font-bold text-lg mb-4 text-gray-800">Q4 - Diciembre</h3>
+                    <div class="space-y-3">
+                        <div class="event-high p-3 bg-gray-50 rounded pulse-animation">
+                            <div class="font-semibold text-sm">Navidad 🎄</div>
+                            <div class="text-xs text-gray-600">Emocional y regalos</div>
+                            <div class="text-xs text-blue-600 mt-1">🎁 Juguetes, joyería, experiencias, comida gourmet</div>
+                            <div class="demand-indicator mt-2"></div>
+                        </div>
+                        <div class="event-medium p-3 bg-gray-50 rounded">
+                            <div class="font-semibold text-sm">Año Nuevo</div>
+                            <div class="text-xs text-gray-600">Preparación 2025</div>
+                            <div class="text-xs text-blue-600 mt-1">🥂 Champán, vestidos fiesta, fuegos artificiales</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Quarterly View -->
+        <div id="quarterly-view" class="view-content hidden">
+            <div class="mb-8">
+                <h2 class="text-3xl font-bold text-gray-800 mb-2">Vista Trimestral 2024</h2>
+                <p class="text-gray-600">Tendencias de productos y servicios por temporada</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <div class="bg-white rounded-lg shadow-lg p-6">
+                    <h3 class="text-xl font-bold mb-4 text-blue-600">Q1 - Enero a Marzo</h3>
+                    <div class="space-y-4">
+                        <div class="border-l-4 border-blue-500 pl-4">
+                            <h4 class="font-semibold">Tendencia Principal</h4>
+                            <p class="text-sm text-gray-600">Propósitos de año nuevo, amor y renovación primaveral</p>
+                        </div>
+                        <div class="bg-gray-50 p-4 rounded">
+                            <h5 class="font-medium mb-2">🎯 Productos Estrella</h5>
+                            <ul class="text-sm space-y-1">
+                                <li>• Equipos de fitness y deportes</li>
+                                <li>• Joyería y perfumes (San Valentín)</li>
+                                <li>• Productos de belleza y cuidado</li>
+                                <li>• Cursos online y libros de autoayuda</li>
+                            </ul>
+                        </div>
+                        <div class="bg-blue-50 p-4 rounded">
+                            <h5 class="font-medium mb-2">📊 Nivel de Demanda</h5>
+                            <p class="text-2xl font-bold text-blue-600">Alto</p>
+                            <p class="text-xs text-gray-600">Especialmente en San Valentín</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-lg p-6">
+                    <h3 class="text-xl font-bold mb-4 text-green-600">Q2 - Abril a Junio</h3>
+                    <div class="space-y-4">
+                        <div class="border-l-4 border-green-500 pl-4">
+                            <h4 class="font-semibold">Tendencia Principal</h4>
+                            <p class="text-sm text-gray-600">Celebraciones familiares y preparación para el verano</p>
+                        </div>
+                        <div class="bg-gray-50 p-4 rounded">
+                            <h5 class="font-medium mb-2">🎯 Productos Estrella</h5>
+                            <ul class="text-sm space-y-1">
+                                <li>• Artículos de viaje y maletas</li>
+                                <li>• Regalos para madres y padres</li>
+                                <li>• Ropa y accesorios de verano</li>
+                                <li>• Productos para exteriores y jardín</li>
+                            </ul>
+                        </div>
+                        <div class="bg-green-50 p-4 rounded">
+                            <h5 class="font-medium mb-2">📊 Nivel de Demanda</h5>
+                            <p class="text-2xl font-bold text-green-600">Medio-Alto</p>
+                            <p class="text-xs text-gray-600">Picos en días especiales</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-lg p-6">
+                    <h3 class="text-xl font-bold mb-4 text-yellow-600">Q3 - Julio a Septiembre</h3>
+                    <div class="space-y-4">
+                        <div class="border-l-4 border-yellow-500 pl-4">
+                            <h4 class="font-semibold">Tendencia Principal</h4>
+                            <p class="text-sm text-gray-600">Vacaciones de verano y vuelta al cole</p>
+                        </div>
+                        <div class="bg-gray-50 p-4 rounded">
+                            <h5 class="font-medium mb-2">🎯 Productos Estrella</h5>
+                            <ul class="text-sm space-y-1">
+                                <li>• Material escolar y universitario</li>
+                                <li>• Tecnología educativa (laptops, tablets)</li>
+                                <li>• Ropa de temporada (otoño)</li>
+                                <li>• Productos de playa y vacaciones</li>
+                            </ul>
+                        </div>
+                        <div class="bg-yellow-50 p-4 rounded">
+                            <h5 class="font-medium mb-2">📊 Nivel de Demanda</h5>
+                            <p class="text-2xl font-bold text-yellow-600">Alto</p>
+                            <p class="text-xs text-gray-600">Especialmente en septiembre</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-lg p-6">
+                    <h3 class="text-xl font-bold mb-4 text-red-600">Q4 - Octubre a Diciembre</h3>
+                    <div class="space-y-4">
+                        <div class="border-l-4 border-red-500 pl-4">
+                            <h4 class="font-semibold">Tendencia Principal</h4>
+                            <p class="text-sm text-gray-600">Temporada alta de compras - Halloween, Black Friday, Navidad</p>
+                        </div>
+                        <div class="bg-gray-50 p-4 rounded">
+                            <h5 class="font-medium mb-2">🎯 Productos Estrella</h5>
+                            <ul class="text-sm space-y-1">
+                                <li>• Juguetes y regalos navideños</li>
+                                <li>• Electrónicos y gadgets</li>
+                                <li>• Disfraces y decoración</li>
+                                <li>• Productos gourmet y alimentación</li>
+                            </ul>
+                        </div>
+                        <div class="bg-red-50 p-4 rounded">
+                            <h5 class="font-medium mb-2">📊 Nivel de Demanda</h5>
+                            <p class="text-2xl font-bold text-red-600">Máximo</p>
+                            <p class="text-xs text-gray-600">Pico anual de ventas</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Monthly View -->
+        <div id="monthly-view" class="view-content hidden">
+            <div class="mb-8 flex items-center justify-between">
+                <div>
+                    <h2 class="text-3xl font-bold text-gray-800 mb-2">Vista Mensual</h2>
+                    <p class="text-gray-600">Análisis detallado de productos y tendencias por mes</p>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <select id="monthSelector" class="px-4 py-2 border rounded-lg" onchange="changeMonth()">
+                        <option value="febrero">Febrero 2024</option>
+                        <option value="noviembre">Noviembre 2024</option>
+                        <option value="diciembre">Diciembre 2024</option>
+                    </select>
+                </div>
+            </div>
+
+            <div id="month-content">
+                <!-- February Content (default) -->
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                    <div class="lg:col-span-2">
+                        <div class="bg-white rounded-lg shadow-lg p-6 mb-6">
+                            <h3 class="text-xl font-bold mb-4 text-red-600">San Valentín - 14 Febrero</h3>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div>
+                                    <h4 class="font-semibold mb-3 text-gray-800">📊 Datos de Demanda</h4>
+                                    <div class="space-y-2">
+                                        <div class="flex justify-between">
+                                            <span class="text-sm">Nivel de búsqueda:</span>
+                                            <span class="font-medium text-red-600">Muy Alto</span>
+                                        </div>
+                                        <div class="flex justify-between">
+                                            <span class="text-sm">Duración pico:</span>
+                                            <span class="font-medium">7-14 Febrero</span>
+                                        </div>
+                                        <div class="flex justify-between">
+                                            <span class="text-sm">Competencia:</span>
+                                            <span class="font-medium text-orange-600">Alta</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold mb-3 text-gray-800">🎯 Público Objetivo</h4>
+                                    <div class="space-y-2 text-sm">
+                                        <div class="bg-pink-50 p-2 rounded">Parejas 25-40 años</div>
+                                        <div class="bg-purple-50 p-2 rounded">Solteros buscando regalo</div>
+                                        <div class="bg-red-50 p-2 rounded">Compradores de última hora</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-white rounded-lg shadow-lg p-6">
+                            <h3 class="text-lg font-bold mb-4">📅 Cronograma de Preparación</h3>
+                            <div class="space-y-4">
+                                <div class="flex items-center space-x-4 p-3 bg-blue-50 rounded">
+                                    <div class="w-3 h-3 bg-blue-500 rounded-full"></div>
+                                    <div class="flex-1">
+                                        <div class="font-medium">1-7 Feb: Preparación</div>
+                                        <div class="text-sm text-gray-600">Stock, contenido y promociones</div>
+                                    </div>
+                                    <div class="text-sm font-medium">📦 Inventario</div>
+                                </div>
+                                <div class="flex items-center space-x-4 p-3 bg-yellow-50 rounded">
+                                    <div class="w-3 h-3 bg-yellow-500 rounded-full"></div>
+                                    <div class="flex-1">
+                                        <div class="font-medium">8-12 Feb: Lanzamiento</div>
+                                        <div class="text-sm text-gray-600">Activación de ofertas y comunicación</div>
+                                    </div>
+                                    <div class="text-sm font-medium">🚀 Activación</div>
+                                </div>
+                                <div class="flex items-center space-x-4 p-3 bg-red-50 rounded">
+                                    <div class="w-3 h-3 bg-red-500 rounded-full"></div>
+                                    <div class="flex-1">
+                                        <div class="font-medium">13-14 Feb: Pico</div>
+                                        <div class="text-sm text-gray-600">Máxima demanda y urgencia</div>
+                                    </div>
+                                    <div class="text-sm font-medium">⚡ Pico</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="space-y-6">
+                        <div class="bg-white rounded-lg shadow-lg p-6">
+                            <h3 class="text-lg font-bold mb-4 text-purple-600">💡 Estrategias Recomendadas</h3>
+                            <div class="space-y-3 text-sm">
+                                <div class="p-3 bg-purple-50 rounded">
+                                    <strong>Comunicación:</strong> Enfoque emocional y romántico, evitar exceso de promociones
+                                </div>
+                                <div class="p-3 bg-pink-50 rounded">
+                                    <strong>Timing:</strong> Intensificar comunicación del 10-14 Feb, crear urgencia gradual
+                                </div>
+                                <div class="p-3 bg-red-50 rounded">
+                                    <strong>Experiencia:</strong> Facilitar compra de última hora con envío express
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-white rounded-lg shadow-lg p-6">
+                            <h3 class="text-lg font-bold mb-4 text-green-600">🛍️ Oportunidades de Producto</h3>
+                            <div class="space-y-3 text-sm">
+                                <div class="p-3 bg-green-50 rounded">
+                                    <strong>Bundles:</strong> Crear packs románticos con productos complementarios
+                                </div>
+                                <div class="p-3 bg-blue-50 rounded">
+                                    <strong>Personalización:</strong> Ofrecer grabados, mensajes personalizados
+                                </div>
+                                <div class="p-3 bg-yellow-50 rounded">
+                                    <strong>Experiencias:</strong> Incluir servicios como cenas, spa, actividades
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-white rounded-lg shadow-lg p-6">
+                            <h3 class="text-lg font-bold mb-4">📋 Lista de Verificación</h3>
+                            <div class="space-y-2">
+                                <div class="flex items-center space-x-2 p-2 bg-green-50 rounded text-sm">
+                                    <div class="w-2 h-2 bg-green-500 rounded-full"></div>
+                                    <span>✓ Stock suficiente para demanda esperada</span>
+                                </div>
+                                <div class="flex items-center space-x-2 p-2 bg-yellow-50 rounded text-sm">
+                                    <div class="w-2 h-2 bg-yellow-500 rounded-full pulse-animation"></div>
+                                    <span>⏳ Preparar contenido romántico y ofertas</span>
+                                </div>
+                                <div class="flex items-center space-x-2 p-2 bg-blue-50 rounded text-sm">
+                                    <div class="w-2 h-2 bg-blue-500 rounded-full"></div>
+                                    <span>📦 Configurar opciones de envío express</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Weekly View -->
+        <div id="weekly-view" class="view-content hidden">
+            <div class="mb-8 flex items-center justify-between">
+                <div>
+                    <h2 class="text-3xl font-bold text-gray-800 mb-2">Vista Semanal</h2>
+                    <p class="text-gray-600">Planificación operativa y preparación por semanas clave</p>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <select id="weekSelector" class="px-4 py-2 border rounded-lg" onchange="changeWeek()">
+                        <option value="6">Semana 6 - San Valentín</option>
+                        <option value="47">Semana 47 - Black Friday</option>
+                        <option value="51">Semana 51 - Navidad</option>
+                    </select>
+                </div>
+            </div>
+
+            <div id="week-content">
+                <!-- Week 6 Content (default) -->
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    <div class="space-y-6">
+                        <div class="bg-white rounded-lg shadow-lg p-6">
+                            <h3 class="text-xl font-bold mb-4 text-red-600">❤️ Semana 6: San Valentín</h3>
+                            <div class="space-y-4">
+                                <div class="border-l-4 border-red-500 pl-4">
+                                    <h4 class="font-semibold">Evento Principal</h4>
+                                    <p class="text-sm text-gray-600">San Valentín - 14 Febrero. Día de máximo impacto emocional para regalos y experiencias románticas.</p>
+                                </div>
+                                
+                                <div class="bg-purple-50 p-4 rounded">
+                                    <h4 class="font-semibold mb-2 text-purple-800">💡 Consejo Técnico</h4>
+                                    <ul class="text-sm space-y-1 text-purple-700">
+                                        <li>• Segmentación: Parejas 25-40, solteros buscando regalo</li>
+                                        <li>• Pujas: +40% en "regalo san valentín" del 10-14 Feb</li>
+                                        <li>• SEO: Optimizar para "ideas regalo romántico"</li>
+                                        <li>• Tono: Emocional, romántico, urgencia creciente</li>
+                                    </ul>
+                                </div>
+
+                                <div class="bg-green-50 p-4 rounded">
+                                    <h4 class="font-semibold mb-2 text-green-800">🛍️ Oportunidad Comercial</h4>
+                                    <ul class="text-sm space-y-1 text-green-700">
+                                        <li>• Bundle "Pack Romántico" con envoltorio premium</li>
+                                        <li>• Descuento 2x1 en productos complementarios</li>
+                                        <li>• Remarketing "última hora" con envío express</li>
+                                        <li>• Cross-selling automático en checkout</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-white rounded-lg shadow-lg p-6">
+                            <h3 class="text-lg font-bold mb-4">📊 KPIs Semanales</h3>
+                            <div class="grid grid-cols-2 gap-4">
+                                <div class="text-center p-3 bg-blue-50 rounded">
+                                    <div class="text-2xl font-bold text-blue-600">4.2%</div>
+                                    <div class="text-sm text-gray-600">CTR Objetivo</div>
+                                </div>
+                                <div class="text-center p-3 bg-green-50 rounded">
+                                    <div class="text-2xl font-bold text-green-600">6.8%</div>
+                                    <div class="text-sm text-gray-600">Conversión</div>
+                                </div>
+                                <div class="text-center p-3 bg-purple-50 rounded">
+                                    <div class="text-2xl font-bold text-purple-600">€11,500</div>
+                                    <div class="text-sm text-gray-600">Presupuesto</div>
+                                </div>
+                                <div class="text-center p-3 bg-red-50 rounded">
+                                    <div class="text-2xl font-bold text-red-600">285%</div>
+                                    <div class="text-sm text-gray-600">ROI Esperado</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="space-y-6">
+                        <div class="bg-white rounded-lg shadow-lg p-6">
+                            <h3 class="text-lg font-bold mb-4">📅 Cronograma Diario</h3>
+                            <div class="space-y-3">
+                                <div class="flex items-center space-x-3 p-3 bg-gray-50 rounded">
+                                    <div class="w-8 h-8 bg-blue-500 text-white rounded-full flex items-center justify-center text-sm font-bold">L</div>
+                                    <div class="flex-1">
+                                        <div class="font-medium">Lunes 12 Feb</div>
+                                        <div class="text-sm text-gray-600">Lanzar campaña "2 días para San Valentín"</div>
+                                    </div>
+                                    <div class="text-sm font-medium">€1,800</div>
+                                </div>
+                                <div class="flex items-center space-x-3 p-3 bg-gray-50 rounded">
+                                    <div class="w-8 h-8 bg-yellow-500 text-white rounded-full flex items-center justify-center text-sm font-bold">M</div>
+                                    <div class="flex-1">
+                                        <div class="font-medium">Martes 13 Feb</div>
+                                        <div class="text-sm text-gray-600">Intensificar remarketing + envío express</div>
+                                    </div>
+                                    <div class="text-sm font-medium">€2,200</div>
+                                </div>
+                                <div class="flex items-center space-x-3 p-3 bg-red-50 rounded">
+                                    <div class="w-8 h-8 bg-red-500 text-white rounded-full flex items-center justify-center text-sm font-bold">M</div>
+                                    <div class="flex-1">
+                                        <div class="font-medium">Miércoles 14 Feb</div>
+                                        <div class="text-sm text-gray-600">DÍA CLAVE - Máxima inversión</div>
+                                    </div>
+                                    <div class="text-sm font-medium">€3,500</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-white rounded-lg shadow-lg p-6">
+                            <h3 class="text-lg font-bold mb-4">🎯 Canales Activos</h3>
+                            <div class="space-y-3">
+                                <div class="flex items-center justify-between p-3 bg-blue-50 rounded">
+                                    <div class="flex items-center space-x-3">
+                                        <div class="w-3 h-3 bg-blue-500 rounded-full"></div>
+                                        <span class="font-medium">Google Ads</span>
+                                    </div>
+                                    <span class="text-sm font-medium">€4,200</span>
+                                </div>
+                                <div class="flex items-center justify-between p-3 bg-purple-50 rounded">
+                                    <div class="flex items-center space-x-3">
+                                        <div class="w-3 h-3 bg-purple-500 rounded-full"></div>
+                                        <span class="font-medium">Meta Ads</span>
+                                    </div>
+                                    <span class="text-sm font-medium">€3,800</span>
+                                </div>
+                                <div class="flex items-center justify-between p-3 bg-pink-50 rounded">
+                                    <div class="flex items-center space-x-3">
+                                        <div class="w-3 h-3 bg-pink-500 rounded-full"></div>
+                                        <span class="font-medium">Email Marketing</span>
+                                    </div>
+                                    <span class="text-sm font-medium">€800</span>
+                                </div>
+                                <div class="flex items-center justify-between p-3 bg-green-50 rounded">
+                                    <div class="flex items-center space-x-3">
+                                        <div class="w-3 h-3 bg-green-500 rounded-full"></div>
+                                        <span class="font-medium">TikTok Ads</span>
+                                    </div>
+                                    <span class="text-sm font-medium">€2,700</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-white rounded-lg shadow-lg p-6">
+                            <h3 class="text-lg font-bold mb-4">⚠️ Alertas y Recomendaciones</h3>
+                            <div class="space-y-2">
+                                <div class="flex items-start space-x-2 p-3 bg-yellow-50 rounded">
+                                    <div class="w-2 h-2 bg-yellow-500 rounded-full mt-2 pulse-animation"></div>
+                                    <div class="text-sm">
+                                        <strong>Saturación de audiencia:</strong> Rotar creativos cada 48h para evitar fatiga
+                                    </div>
+                                </div>
+                                <div class="flex items-start space-x-2 p-3 bg-red-50 rounded">
+                                    <div class="w-2 h-2 bg-red-500 rounded-full mt-2 pulse-animation"></div>
+                                    <div class="text-sm">
+                                        <strong>Stock crítico:</strong> Producto estrella con solo 48 unidades restantes
+                                    </div>
+                                </div>
+                                <div class="flex items-start space-x-2 p-3 bg-blue-50 rounded">
+                                    <div class="w-2 h-2 bg-blue-500 rounded-full mt-2"></div>
+                                    <div class="text-sm">
+                                        <strong>Optimización:</strong> Pausar anuncios con CTR < 2% y reasignar presupuesto
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // View switching functionality
+        function showView(viewName) {
+            // Hide all views
+            document.querySelectorAll('.view-content').forEach(view => {
+                view.classList.add('hidden');
+            });
+            
+            // Show selected view
+            document.getElementById(viewName + '-view').classList.remove('hidden');
+            
+            // Update tab styles
+            document.querySelectorAll('nav button').forEach(tab => {
+                tab.classList.remove('border-blue-500', 'text-blue-600');
+                tab.classList.add('border-transparent', 'text-gray-500');
+            });
+            
+            document.getElementById('tab-' + viewName).classList.remove('border-transparent', 'text-gray-500');
+            document.getElementById('tab-' + viewName).classList.add('border-blue-500', 'text-blue-600');
+        }
+
+        // Month selector functionality
+        function changeMonth() {
+            const selector = document.getElementById('monthSelector');
+            const selectedMonth = selector.value;
+            const monthContent = document.getElementById('month-content');
+            
+            if (selectedMonth === 'noviembre') {
+                monthContent.innerHTML = `
+                    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                        <div class="lg:col-span-2">
+                            <div class="bg-white rounded-lg shadow-lg p-6 mb-6">
+                                <h3 class="text-xl font-bold mb-4 text-orange-600">Black Friday - 29 Noviembre</h3>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                    <div>
+                                        <h4 class="font-semibold mb-3 text-gray-800">📊 Métricas Históricas</h4>
+                                        <div class="space-y-2">
+                                            <div class="flex justify-between">
+                                                <span class="text-sm">CTR 2023:</span>
+                                                <span class="font-medium">8.7%</span>
+                                            </div>
+                                            <div class="flex justify-between">
+                                                <span class="text-sm">Conversión:</span>
+                                                <span class="font-medium">12.3%</span>
+                                            </div>
+                                            <div class="flex justify-between">
+                                                <span class="text-sm">ROI:</span>
+                                                <span class="font-medium text-green-600">420%</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-semibold mb-3 text-gray-800">🎯 Segmentación</h4>
+                                        <div class="space-y-2 text-sm">
+                                            <div class="bg-red-50 p-2 rounded">Cazadores de ofertas</div>
+                                            <div class="bg-orange-50 p-2 rounded">Compradores navideños</div>
+                                            <div class="bg-yellow-50 p-2 rounded">Móvil-first (70%)</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="space-y-6">
+                            <div class="bg-white rounded-lg shadow-lg p-6">
+                                <h3 class="text-lg font-bold mb-4 text-red-600">🔥 Estrategia Black Friday</h3>
+                                <div class="space-y-3 text-sm">
+                                    <div class="p-3 bg-red-50 rounded">
+                                        <strong>Descuentos:</strong> Escalonados -20%, -30%, -50% en últimas horas
+                                    </div>
+                                    <div class="p-3 bg-orange-50 rounded">
+                                        <strong>Saturación:</strong> Máxima inversión en display y video
+                                    </div>
+                                    <div class="p-3 bg-yellow-50 rounded">
+                                        <strong>Mobile:</strong> 70% del tráfico, optimizar velocidad
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            } else if (selectedMonth === 'diciembre') {
+                monthContent.innerHTML = `
+                    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                        <div class="lg:col-span-2">
+                            <div class="bg-white rounded-lg shadow-lg p-6 mb-6">
+                                <h3 class="text-xl font-bold mb-4 text-green-600">Navidad - Diciembre</h3>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                    <div>
+                                        <h4 class="font-semibold mb-3 text-gray-800">📊 Métricas Históricas</h4>
+                                        <div class="space-y-2">
+                                            <div class="flex justify-between">
+                                                <span class="text-sm">CTR 2023:</span>
+                                                <span class="font-medium">6.1%</span>
+                                            </div>
+                                            <div class="flex justify-between">
+                                                <span class="text-sm">Conversión:</span>
+                                                <span class="font-medium">9.4%</span>
+                                            </div>
+                                            <div class="flex justify-between">
+                                                <span class="text-sm">ROI:</span>
+                                                <span class="font-medium text-green-600">310%</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-semibold mb-3 text-gray-800">🎯 Segmentación</h4>
+                                        <div class="space-y-2 text-sm">
+                                            <div class="bg-green-50 p-2 rounded">Familias con niños</div>
+                                            <div class="bg-red-50 p-2 rounded">Compradores de regalos</div>
+                                            <div class="bg-blue-50 p-2 rounded">Última hora (20-24 Dic)</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="space-y-6">
+                            <div class="bg-white rounded-lg shadow-lg p-6">
+                                <h3 class="text-lg font-bold mb-4 text-green-600">🎄 Estrategia Navideña</h3>
+                                <div class="space-y-3 text-sm">
+                                    <div class="p-3 bg-green-50 rounded">
+                                        <strong>Emocional:</strong> Storytelling familiar y valores navideños
+                                    </div>
+                                    <div class="p-3 bg-red-50 rounded">
+                                        <strong>Envío:</strong> "Garantizado antes del 24" como CTA principal
+                                    </div>
+                                    <div class="p-3 bg-blue-50 rounded">
+                                        <strong>Regalos:</strong> Guías por edad y presupuesto
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            } else {
+                // Default February content
+                monthContent.innerHTML = `
+                    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                        <div class="lg:col-span-2">
+                            <div class="bg-white rounded-lg shadow-lg p-6 mb-6">
+                                <h3 class="text-xl font-bold mb-4 text-red-600">San Valentín - 14 Febrero</h3>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                    <div>
+                                        <h4 class="font-semibold mb-3 text-gray-800">📊 Métricas Históricas</h4>
+                                        <div class="space-y-2">
+                                            <div class="flex justify-between">
+                                                <span class="text-sm">CTR 2023:</span>
+                                                <span class="font-medium">4.2%</span>
+                                            </div>
+                                            <div class="flex justify-between">
+                                                <span class="text-sm">Conversión:</span>
+                                                <span class="font-medium">6.8%</span>
+                                            </div>
+                                            <div class="flex justify-between">
+                                                <span class="text-sm">ROI:</span>
+                                                <span class="font-medium text-green-600">285%</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-semibold mb-3 text-gray-800">🎯 Segmentación</h4>
+                                        <div class="space-y-2 text-sm">
+                                            <div class="bg-pink-50 p-2 rounded">Parejas 25-40 años</div>
+                                            <div class="bg-purple-50 p-2 rounded">Solteros buscando regalo</div>
+                                            <div class="bg-red-50 p-2 rounded">Última hora (13-14 Feb)</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="bg-white rounded-lg shadow-lg p-6">
+                                <h3 class="text-lg font-bold mb-4">📅 Cronograma de Campaña</h3>
+                                <div class="space-y-4">
+                                    <div class="flex items-center space-x-4 p-3 bg-blue-50 rounded">
+                                        <div class="w-3 h-3 bg-blue-500 rounded-full"></div>
+                                        <div class="flex-1">
+                                            <div class="font-medium">1-7 Feb: Lanzamiento</div>
+                                            <div class="text-sm text-gray-600">Teasing y awareness</div>
+                                        </div>
+                                        <div class="text-sm font-medium">€3,500</div>
+                                    </div>
+                                    <div class="flex items-center space-x-4 p-3 bg-yellow-50 rounded">
+                                        <div class="w-3 h-3 bg-yellow-500 rounded-full"></div>
+                                        <div class="flex-1">
+                                            <div class="font-medium">8-12 Feb: Intensificación</div>
+                                            <div class="text-sm text-gray-600">Remarketing + nuevas audiencias</div>
+                                        </div>
+                                        <div class="text-sm font-medium">€5,200</div>
+                                    </div>
+                                    <div class="flex items-center space-x-4 p-3 bg-red-50 rounded">
+                                        <div class="w-3 h-3 bg-red-500 rounded-full"></div>
+                                        <div class="flex-1">
+                                            <div class="font-medium">13-14 Feb: Urgencia</div>
+                                            <div class="text-sm text-gray-600">Última hora + envío express</div>
+                                        </div>
+                                        <div class="text-sm font-medium">€2,800</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="space-y-6">
+                            <div class="bg-white rounded-lg shadow-lg p-6">
+                                <h3 class="text-lg font-bold mb-4 text-purple-600">💡 Consejo Técnico</h3>
+                                <div class="space-y-3 text-sm">
+                                    <div class="p-3 bg-purple-50 rounded">
+                                        <strong>Segmentación:</strong> Usar lookalike audiences basadas en compradores de regalos del año anterior
+                                    </div>
+                                    <div class="p-3 bg-pink-50 rounded">
+                                        <strong>Pujas PPC:</strong> Aumentar 40% en keywords "regalo san valentín" del 10-14 Feb
+                                    </div>
+                                    <div class="p-3 bg-red-50 rounded">
+                                        <strong>Tono:</strong> Emocional, romántico, con urgencia creciente hacia el 14
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="bg-white rounded-lg shadow-lg p-6">
+                                <h3 class="text-lg font-bold mb-4 text-green-600">🛍️ Oportunidad Comercial</h3>
+                                <div class="space-y-3 text-sm">
+                                    <div class="p-3 bg-green-50 rounded">
+                                        <strong>Bundles:</strong> "Pack Romántico" - producto + envoltorio + tarjeta
+                                    </div>
+                                    <div class="p-3 bg-blue-50 rounded">
+                                        <strong>Cross-selling:</strong> Sugerir complementos en checkout
+                                    </div>
+                                    <div class="p-3 bg-yellow-50 rounded">
+                                        <strong>Urgencia:</strong> "Solo quedan X horas para entrega el 14"
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="bg-white rounded-lg shadow-lg p-6">
+                                <h3 class="text-lg font-bold mb-4">🔔 Alertas Activas</h3>
+                                <div class="space-y-2">
+                                    <div class="flex items-center space-x-2 p-2 bg-yellow-50 rounded text-sm">
+                                        <div class="w-2 h-2 bg-yellow-500 rounded-full pulse-animation"></div>
+                                        <span>Faltan 7 días - Activar remarketing</span>
+                                    </div>
+                                    <div class="flex items-center space-x-2 p-2 bg-red-50 rounded text-sm">
+                                        <div class="w-2 h-2 bg-red-500 rounded-full pulse-animation"></div>
+                                        <span>Stock bajo en producto estrella</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }
+        }
+
+        // Week selector functionality
+        function changeWeek() {
+            const selector = document.getElementById('weekSelector');
+            const selectedWeek = selector.value;
+            const weekContent = document.getElementById('week-content');
+            
+            if (selectedWeek === '47') {
+                weekContent.innerHTML = `
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                        <div class="space-y-6">
+                            <div class="bg-white rounded-lg shadow-lg p-6">
+                                <h3 class="text-xl font-bold mb-4 text-red-600">🔥 Semana 47: Black Friday</h3>
+                                <div class="space-y-4">
+                                    <div class="border-l-4 border-red-500 pl-4">
+                                        <h4 class="font-semibold">Evento Principal</h4>
+                                        <p class="text-sm text-gray-600">Black Friday - 29 Noviembre. Máxima saturación de anuncios display y estrategia de descuento escalonado.</p>
+                                    </div>
+                                    
+                                    <div class="bg-red-50 p-4 rounded">
+                                        <h4 class="font-semibold mb-2 text-red-800">💡 Consejo Técnico</h4>
+                                        <ul class="text-sm space-y-1 text-red-700">
+                                            <li>• Saturación máxima: Display, video, shopping ads</li>
+                                            <li>• Mobile-first: 70% del tráfico esperado</li>
+                                            <li>• Velocidad crítica: Optimizar para < 2s carga</li>
+                                            <li>• Remarketing agresivo: Frecuencia 8-12 impresiones</li>
+                                        </ul>
+                                    </div>
+
+                                    <div class="bg-orange-50 p-4 rounded">
+                                        <h4 class="font-semibold mb-2 text-orange-800">🛍️ Oportunidad Comercial</h4>
+                                        <ul class="text-sm space-y-1 text-orange-700">
+                                            <li>• Descuento escalonado: -20%, -30%, -50% últimas horas</li>
+                                            <li>• Stock limitado: "Solo quedan X unidades"</li>
+                                            <li>• Flash sales cada 2 horas</li>
+                                            <li>• Bundle exclusivos solo para Black Friday</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="bg-white rounded-lg shadow-lg p-6">
+                                <h3 class="text-lg font-bold mb-4">📊 KPIs Semanales</h3>
+                                <div class="grid grid-cols-2 gap-4">
+                                    <div class="text-center p-3 bg-red-50 rounded">
+                                        <div class="text-2xl font-bold text-red-600">8.7%</div>
+                                        <div class="text-sm text-gray-600">CTR Objetivo</div>
+                                    </div>
+                                    <div class="text-center p-3 bg-orange-50 rounded">
+                                        <div class="text-2xl font-bold text-orange-600">12.3%</div>
+                                        <div class="text-sm text-gray-600">Conversión</div>
+                                    </div>
+                                    <div class="text-center p-3 bg-yellow-50 rounded">
+                                        <div class="text-2xl font-bold text-yellow-600">€25,000</div>
+                                        <div class="text-sm text-gray-600">Presupuesto</div>
+                                    </div>
+                                    <div class="text-center p-3 bg-green-50 rounded">
+                                        <div class="text-2xl font-bold text-green-600">420%</div>
+                                        <div class="text-sm text-gray-600">ROI Esperado</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="space-y-6">
+                            <div class="bg-white rounded-lg shadow-lg p-6">
+                                <h3 class="text-lg font-bold mb-4">📅 Cronograma Black Friday</h3>
+                                <div class="space-y-3">
+                                    <div class="flex items-center space-x-3 p-3 bg-red-50 rounded">
+                                        <div class="w-8 h-8 bg-red-500 text-white rounded-full flex items-center justify-center text-sm font-bold">V</div>
+                                        <div class="flex-1">
+                                            <div class="font-medium">Viernes 29 Nov - BLACK FRIDAY</div>
+                                            <div class="text-sm text-gray-600">Máxima inversión - Descuentos escalonados</div>
+                                        </div>
+                                        <div class="text-sm font-medium">€15,000</div>
+                                    </div>
+                                    <div class="flex items-center space-x-3 p-3 bg-orange-50 rounded">
+                                        <div class="w-8 h-8 bg-orange-500 text-white rounded-full flex items-center justify-center text-sm font-bold">S</div>
+                                        <div class="flex-1">
+                                            <div class="font-medium">Sábado 30 Nov</div>
+                                            <div class="text-sm text-gray-600">Continuación ofertas + remarketing</div>
+                                        </div>
+                                        <div class="text-sm font-medium">€6,000</div>
+                                    </div>
+                                    <div class="flex items-center space-x-3 p-3 bg-blue-50 rounded">
+                                        <div class="w-8 h-8 bg-blue-500 text-white rounded-full flex items-center justify-center text-sm font-bold">D</div>
+                                        <div class="flex-1">
+                                            <div class="font-medium">Domingo 1 Dic</div>
+                                            <div class="text-sm text-gray-600">Preparación Cyber Monday</div>
+                                        </div>
+                                        <div class="text-sm font-medium">€4,000</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="bg-white rounded-lg shadow-lg p-6">
+                                <h3 class="text-lg font-bold mb-4">⚠️ Alertas Críticas</h3>
+                                <div class="space-y-2">
+                                    <div class="flex items-start space-x-2 p-3 bg-red-50 rounded">
+                                        <div class="w-2 h-2 bg-red-500 rounded-full mt-2 pulse-animation"></div>
+                                        <div class="text-sm">
+                                            <strong>Servidor:</strong> Preparar escalado automático para 10x tráfico normal
+                                        </div>
+                                    </div>
+                                    <div class="flex items-start space-x-2 p-3 bg-orange-50 rounded">
+                                        <div class="w-2 h-2 bg-orange-500 rounded-full mt-2 pulse-animation"></div>
+                                        <div class="text-sm">
+                                            <strong>Inventario:</strong> Monitoreo en tiempo real de stock crítico
+                                        </div>
+                                    </div>
+                                    <div class="flex items-start space-x-2 p-3 bg-yellow-50 rounded">
+                                        <div class="w-2 h-2 bg-yellow-500 rounded-full mt-2 pulse-animation"></div>
+                                        <div class="text-sm">
+                                            <strong>Competencia:</strong> Monitorear precios cada hora
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            } else if (selectedWeek === '51') {
+                weekContent.innerHTML = `
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                        <div class="space-y-6">
+                            <div class="bg-white rounded-lg shadow-lg p-6">
+                                <h3 class="text-xl font-bold mb-4 text-green-600">🎄 Semana 51: Navidad</h3>
+                                <div class="space-y-4">
+                                    <div class="border-l-4 border-green-500 pl-4">
+                                        <h4 class="font-semibold">Evento Principal</h4>
+                                        <p class="text-sm text-gray-600">Navidad - 25 Diciembre. Campañas emocionales con segmentación por regalos y envío garantizado antes del 24.</p>
+                                    </div>
+                                    
+                                    <div class="bg-green-50 p-4 rounded">
+                                        <h4 class="font-semibold mb-2 text-green-800">💡 Consejo Técnico</h4>
+                                        <ul class="text-sm space-y-1 text-green-700">
+                                            <li>• Storytelling familiar y valores navideños</li>
+                                            <li>• Segmentación por edad de destinatarios</li>
+                                            <li>• CTA principal: "Garantizado antes del 24"</li>
+                                            <li>• Remarketing emocional con urgencia de tiempo</li>
+                                        </ul>
+                                    </div>
+
+                                    <div class="bg-red-50 p-4 rounded">
+                                        <h4 class="font-semibold mb-2 text-red-800">🛍️ Oportunidad Comercial</h4>
+                                        <ul class="text-sm space-y-1 text-red-700">
+                                            <li>• Guías de regalos por edad y presupuesto</li>
+                                            <li>• Envoltorio premium gratuito</li>
+                                            <li>• Envío express garantizado</li>
+                                            <li>• Tarjetas personalizadas incluidas</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="bg-white rounded-lg shadow-lg p-6">
+                                <h3 class="text-lg font-bold mb-4">📊 KPIs Semanales</h3>
+                                <div class="grid grid-cols-2 gap-4">
+                                    <div class="text-center p-3 bg-green-50 rounded">
+                                        <div class="text-2xl font-bold text-green-600">6.1%</div>
+                                        <div class="text-sm text-gray-600">CTR Objetivo</div>
+                                    </div>
+                                    <div class="text-center p-3 bg-red-50 rounded">
+                                        <div class="text-2xl font-bold text-red-600">9.4%</div>
+                                        <div class="text-sm text-gray-600">Conversión</div>
+                                    </div>
+                                    <div class="text-center p-3 bg-blue-50 rounded">
+                                        <div class="text-2xl font-bold text-blue-600">€18,500</div>
+                                        <div class="text-sm text-gray-600">Presupuesto</div>
+                                    </div>
+                                    <div class="text-center p-3 bg-yellow-50 rounded">
+                                        <div class="text-2xl font-bold text-yellow-600">310%</div>
+                                        <div class="text-sm text-gray-600">ROI Esperado</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="space-y-6">
+                            <div class="bg-white rounded-lg shadow-lg p-6">
+                                <h3 class="text-lg font-bold mb-4">📅 Cronograma Navideño</h3>
+                                <div class="space-y-3">
+                                    <div class="flex items-center space-x-3 p-3 bg-green-50 rounded">
+                                        <div class="w-8 h-8 bg-green-500 text-white rounded-full flex items-center justify-center text-sm font-bold">L</div>
+                                        <div class="flex-1">
+                                            <div class="font-medium">Lunes 23 Dic</div>
+                                            <div class="text-sm text-gray-600">Última oportunidad - Envío express</div>
+                                        </div>
+                                        <div class="text-sm font-medium">€6,500</div>
+                                    </div>
+                                    <div class="flex items-center space-x-3 p-3 bg-red-50 rounded">
+                                        <div class="w-8 h-8 bg-red-500 text-white rounded-full flex items-center justify-center text-sm font-bold">M</div>
+                                        <div class="flex-1">
+                                            <div class="font-medium">Martes 24 Dic - NOCHEBUENA</div>
+                                            <div class="text-sm text-gray-600">Regalos digitales instantáneos</div>
+                                        </div>
+                                        <div class="text-sm font-medium">€4,000</div>
+                                    </div>
+                                    <div class="flex items-center space-x-3 p-3 bg-blue-50 rounded">
+                                        <div class="w-8 h-8 bg-blue-500 text-white rounded-full flex items-center justify-center text-sm font-bold">M</div>
+                                        <div class="flex-1">
+                                            <div class="font-medium">Miércoles 25 Dic - NAVIDAD</div>
+                                            <div class="text-sm text-gray-600">Pausa campañas - Felicitaciones</div>
+                                        </div>
+                                        <div class="text-sm font-medium">€500</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="bg-white rounded-lg shadow-lg p-6">
+                                <h3 class="text-lg font-bold mb-4">🎁 Segmentos Navideños</h3>
+                                <div class="space-y-3">
+                                    <div class="flex items-center justify-between p-3 bg-green-50 rounded">
+                                        <div class="flex items-center space-x-3">
+                                            <div class="w-3 h-3 bg-green-500 rounded-full"></div>
+                                            <span class="font-medium">Familias con niños</span>
+                                        </div>
+                                        <span class="text-sm font-medium">40%</span>
+                                    </div>
+                                    <div class="flex items-center justify-between p-3 bg-red-50 rounded">
+                                        <div class="flex items-center space-x-3">
+                                            <div class="w-3 h-3 bg-red-500 rounded-full"></div>
+                                            <span class="font-medium">Compradores de regalos</span>
+                                        </div>
+                                        <span class="text-sm font-medium">35%</span>
+                                    </div>
+                                    <div class="flex items-center justify-between p-3 bg-blue-50 rounded">
+                                        <div class="flex items-center space-x-3">
+                                            <div class="w-3 h-3 bg-blue-500 rounded-full"></div>
+                                            <span class="font-medium">Última hora</span>
+                                        </div>
+                                        <span class="text-sm font-medium">25%</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            } else {
+                // Default Week 6 content (San Valentín)
+                weekContent.innerHTML = `
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                        <div class="space-y-6">
+                            <div class="bg-white rounded-lg shadow-lg p-6">
+                                <h3 class="text-xl font-bold mb-4 text-red-600">❤️ Semana 6: San Valentín</h3>
+                                <div class="space-y-4">
+                                    <div class="border-l-4 border-red-500 pl-4">
+                                        <h4 class="font-semibold">Evento Principal</h4>
+                                        <p class="text-sm text-gray-600">San Valentín - 14 Febrero. Día de máximo impacto emocional para regalos y experiencias románticas.</p>
+                                    </div>
+                                    
+                                    <div class="bg-purple-50 p-4 rounded">
+                                        <h4 class="font-semibold mb-2 text-purple-800">💡 Consejo Técnico</h4>
+                                        <ul class="text-sm space-y-1 text-purple-700">
+                                            <li>• Segmentación: Parejas 25-40, solteros buscando regalo</li>
+                                            <li>• Pujas: +40% en "regalo san valentín" del 10-14 Feb</li>
+                                            <li>• SEO: Optimizar para "ideas regalo romántico"</li>
+                                            <li>• Tono: Emocional, romántico, urgencia creciente</li>
+                                        </ul>
+                                    </div>
+
+                                    <div class="bg-green-50 p-4 rounded">
+                                        <h4 class="font-semibold mb-2 text-green-800">🛍️ Oportunidad Comercial</h4>
+                                        <ul class="text-sm space-y-1 text-green-700">
+                                            <li>• Bundle "Pack Romántico" con envoltorio premium</li>
+                                            <li>• Descuento 2x1 en productos complementarios</li>
+                                            <li>• Remarketing "última hora" con envío express</li>
+                                            <li>• Cross-selling automático en checkout</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="bg-white rounded-lg shadow-lg p-6">
+                                <h3 class="text-lg font-bold mb-4">📊 KPIs Semanales</h3>
+                                <div class="grid grid-cols-2 gap-4">
+                                    <div class="text-center p-3 bg-blue-50 rounded">
+                                        <div class="text-2xl font-bold text-blue-600">4.2%</div>
+                                        <div class="text-sm text-gray-600">CTR Objetivo</div>
+                                    </div>
+                                    <div class="text-center p-3 bg-green-50 rounded">
+                                        <div class="text-2xl font-bold text-green-600">6.8%</div>
+                                        <div class="text-sm text-gray-600">Conversión</div>
+                                    </div>
+                                    <div class="text-center p-3 bg-purple-50 rounded">
+                                        <div class="text-2xl font-bold text-purple-600">€11,500</div>
+                                        <div class="text-sm text-gray-600">Presupuesto</div>
+                                    </div>
+                                    <div class="text-center p-3 bg-red-50 rounded">
+                                        <div class="text-2xl font-bold text-red-600">285%</div>
+                                        <div class="text-sm text-gray-600">ROI Esperado</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="space-y-6">
+                            <div class="bg-white rounded-lg shadow-lg p-6">
+                                <h3 class="text-lg font-bold mb-4">📅 Cronograma Diario</h3>
+                                <div class="space-y-3">
+                                    <div class="flex items-center space-x-3 p-3 bg-gray-50 rounded">
+                                        <div class="w-8 h-8 bg-blue-500 text-white rounded-full flex items-center justify-center text-sm font-bold">L</div>
+                                        <div class="flex-1">
+                                            <div class="font-medium">Lunes 12 Feb</div>
+                                            <div class="text-sm text-gray-600">Lanzar campaña "2 días para San Valentín"</div>
+                                        </div>
+                                        <div class="text-sm font-medium">€1,800</div>
+                                    </div>
+                                    <div class="flex items-center space-x-3 p-3 bg-gray-50 rounded">
+                                        <div class="w-8 h-8 bg-yellow-500 text-white rounded-full flex items-center justify-center text-sm font-bold">M</div>
+                                        <div class="flex-1">
+                                            <div class="font-medium">Martes 13 Feb</div>
+                                            <div class="text-sm text-gray-600">Intensificar remarketing + envío express</div>
+                                        </div>
+                                        <div class="text-sm font-medium">€2,200</div>
+                                    </div>
+                                    <div class="flex items-center space-x-3 p-3 bg-red-50 rounded">
+                                        <div class="w-8 h-8 bg-red-500 text-white rounded-full flex items-center justify-center text-sm font-bold">M</div>
+                                        <div class="flex-1">
+                                            <div class="font-medium">Miércoles 14 Feb</div>
+                                            <div class="text-sm text-gray-600">DÍA CLAVE - Máxima inversión</div>
+                                        </div>
+                                        <div class="text-sm font-medium">€3,500</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="bg-white rounded-lg shadow-lg p-6">
+                                <h3 class="text-lg font-bold mb-4">🎯 Canales Activos</h3>
+                                <div class="space-y-3">
+                                    <div class="flex items-center justify-between p-3 bg-blue-50 rounded">
+                                        <div class="flex items-center space-x-3">
+                                            <div class="w-3 h-3 bg-blue-500 rounded-full"></div>
+                                            <span class="font-medium">Google Ads</span>
+                                        </div>
+                                        <span class="text-sm font-medium">€4,200</span>
+                                    </div>
+                                    <div class="flex items-center justify-between p-3 bg-purple-50 rounded">
+                                        <div class="flex items-center space-x-3">
+                                            <div class="w-3 h-3 bg-purple-500 rounded-full"></div>
+                                            <span class="font-medium">Meta Ads</span>
+                                        </div>
+                                        <span class="text-sm font-medium">€3,800</span>
+                                    </div>
+                                    <div class="flex items-center justify-between p-3 bg-pink-50 rounded">
+                                        <div class="flex items-center space-x-3">
+                                            <div class="w-3 h-3 bg-pink-500 rounded-full"></div>
+                                            <span class="font-medium">Email Marketing</span>
+                                        </div>
+                                        <span class="text-sm font-medium">€800</span>
+                                    </div>
+                                    <div class="flex items-center justify-between p-3 bg-green-50 rounded">
+                                        <div class="flex items-center space-x-3">
+                                            <div class="w-3 h-3 bg-green-500 rounded-full"></div>
+                                            <span class="font-medium">TikTok Ads</span>
+                                        </div>
+                                        <span class="text-sm font-medium">€2,700</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="bg-white rounded-lg shadow-lg p-6">
+                                <h3 class="text-lg font-bold mb-4">⚠️ Alertas y Recomendaciones</h3>
+                                <div class="space-y-2">
+                                    <div class="flex items-start space-x-2 p-3 bg-yellow-50 rounded">
+                                        <div class="w-2 h-2 bg-yellow-500 rounded-full mt-2 pulse-animation"></div>
+                                        <div class="text-sm">
+                                            <strong>Saturación de audiencia:</strong> Rotar creativos cada 48h para evitar fatiga
+                                        </div>
+                                    </div>
+                                    <div class="flex items-start space-x-2 p-3 bg-red-50 rounded">
+                                        <div class="w-2 h-2 bg-red-500 rounded-full mt-2 pulse-animation"></div>
+                                        <div class="text-sm">
+                                            <strong>Stock crítico:</strong> Producto estrella con solo 48 unidades restantes
+                                        </div>
+                                    </div>
+                                    <div class="flex items-start space-x-2 p-3 bg-blue-50 rounded">
+                                        <div class="w-2 h-2 bg-blue-500 rounded-full mt-2"></div>
+                                        <div class="text-sm">
+                                            <strong>Optimización:</strong> Pausar anuncios con CTR < 2% y reasignar presupuesto
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }
+        }
+
+        // Initialize with annual view
+        showView('annual');
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'98747b99538546f4',t:'MTc1OTI0MzMwNC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
